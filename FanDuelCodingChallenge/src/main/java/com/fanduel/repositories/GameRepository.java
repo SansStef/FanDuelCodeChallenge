@@ -9,11 +9,9 @@ import com.fanduel.exception.UnsupportedSportException;
 import com.fanduel.model.Game;
 
 @Component
-public class GameRepository extends FanDuelRepository {
+public class GameRepository  {
 
-	public Game get(final String sport, final int id) throws UnsupportedSportException {
-		checkSupportedSport(sport);
-		
+	public Game get(final String sport, final int id) { 
 		Game g = new Game();
 		g.setId(1);
 		g.setHome_team_id(2);
@@ -23,9 +21,7 @@ public class GameRepository extends FanDuelRepository {
 		return g;
 	}
 
-	public List<Game> getAll(String sport) throws UnsupportedSportException {
-		// TODO Auto-generated method stub
-		checkSupportedSport(sport);
+	public List<Game> getAll(String sport) {
 		return null;
 	}
 
