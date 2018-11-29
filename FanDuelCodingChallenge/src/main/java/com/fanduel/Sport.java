@@ -5,7 +5,8 @@ import java.util.Arrays;
 public enum Sport {
 	
 	NFL("QB,WR,RB,TE,K,P,KR,PR"),
-	MLB("SP,RP,C,1B,2B,3B,SS,LF,RF,CF,DH");
+	MLB("SP,RP,C,1B,2B,3B,SS,LF,RF,CF,DH"),
+	NBA("PG,SG,SF,PF,C");
 	
 	private String positions;
 
