@@ -34,7 +34,7 @@ public class GamesController {
 			throws UnsupportedSportException 
 	{
 		if(date!=null) {
-			//TODO get games on given date
+			return new ResponseEntity<List<Game>>(gamesRepository.getAll(Sport.valueOf(sport.toUpperCase()), date), HttpStatus.OK);
 		}
 		
 		return new ResponseEntity<List<Game>>(gamesRepository.getAll(Sport.valueOf(sport.toUpperCase())), HttpStatus.OK);

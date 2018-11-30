@@ -6,12 +6,15 @@ import com.fanduel.Sport;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Game {
-
+	
 	private int id;
+	@JsonProperty("home_team_id")
 	private int homeTeamId;
+	@JsonProperty("away_team_id")
 	private int awayTeamId;
 	private Date date;
 	private Sport sport;
+	private GameState gameState;
 	
 	public int getId() {
 		return id;
@@ -19,14 +22,12 @@ public class Game {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@JsonProperty("home_team_id")
 	public int getHomeTeamId() {
 		return homeTeamId;
 	}
 	public void setHomeTeamId(int homeTeamId) {
 		this.homeTeamId = homeTeamId;
 	}
-	@JsonProperty("away_team_id")
 	public int getAwayTeamId() {
 		return awayTeamId;
 	}
@@ -44,5 +45,11 @@ public class Game {
 	}
 	public void setSport(Sport sport) {
 		this.sport = sport;
+	}
+	public GameState getGameState() {
+		return gameState;
+	}
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
 	}
 }
