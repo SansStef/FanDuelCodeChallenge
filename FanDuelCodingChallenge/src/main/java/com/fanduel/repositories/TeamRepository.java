@@ -14,16 +14,16 @@ import org.springframework.stereotype.Component;
 
 import com.fanduel.Sport;
 import com.fanduel.models.Team;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class TeamRepository extends FanDuelRepository<Team> {
 
-	private static final String TEAMS_JSON_FILENAME = "teams.json";
-	
-	public TeamRepository() throws FileNotFoundException, IOException, ParseException {
-		setup();
+	public TeamRepository() throws JsonMappingException, FileNotFoundException, IOException, ParseException {
 	}
+
+	private static final String TEAMS_JSON_FILENAME = "teams.json";
 	
 	protected void setup() throws IOException, ParseException {
 		JSONParser parser = new JSONParser();

@@ -4,6 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +25,13 @@ public abstract class FanDuelRepository<F> {
 	
 	protected Map<Sport, Map<Integer,F>> dataModels;
 	
-	public FanDuelRepository(){
+	private static final String FILTER_DATE_FORMAT = "MMddyyyy";
+	private DateFormat filterDateFormat;
+	
+	public FanDuelRepository() throws JsonMappingException, FileNotFoundException, IOException, ParseException{
 		dataModels = new HashMap<Sport, Map<Integer,F>>(Sport.values().length);
+		filterDateFormat = new SimpleDateFormat(FILTER_DATE_FORMAT );
+		setup();
 	}
 	
 	abstract protected void setup() throws FileNotFoundException, IOException, ParseException, JsonMappingException;
@@ -49,5 +57,10 @@ public abstract class FanDuelRepository<F> {
 	
 	protected String getJsonFilePath(final Sport sport, final String file) {
 		return sport.name() + "/" + file;
+	}
+	
+	protected boolean sameDay(final Date gameDate, final String filterDate) {
+		
+		return filterDate.equals(filterDateFormat.format(gameDate));
 	}
 }

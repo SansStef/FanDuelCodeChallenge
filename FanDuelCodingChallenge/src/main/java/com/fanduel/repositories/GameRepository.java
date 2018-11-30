@@ -23,16 +23,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class GameRepository extends FanDuelRepository<Game> {
 
+	public GameRepository() throws JsonMappingException, FileNotFoundException, IOException, ParseException {
+	}
+
 	private static final String GAMES_JSON_FILENAME = "games.json";
 	private static final String GAME_STATES_JSON_FILENAME = "game_states.json";
 	private static final String JSON_DATE_FORMAT = "M/d/yyyy";
-	private static final String FILTER_DATE_FORMAT = "MMddyyyy";
-	
-	private DateFormat filterDateFormat = new SimpleDateFormat(FILTER_DATE_FORMAT );
-	
-	public GameRepository() throws FileNotFoundException, IOException, ParseException {
-		setup();
-	}
 	
 	protected void setup() throws FileNotFoundException, IOException, ParseException, JsonMappingException {
 		JSONParser parser = new JSONParser();
@@ -77,8 +73,4 @@ public class GameRepository extends FanDuelRepository<Game> {
 				.collect(Collectors.toList());
 	}
 
-	private boolean sameDay(final Date gameDate, final String filterDate) {
-		
-		return filterDate.equals(filterDateFormat.format(gameDate));
-	}
 }
