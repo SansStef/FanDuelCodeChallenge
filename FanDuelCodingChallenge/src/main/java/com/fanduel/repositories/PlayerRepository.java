@@ -54,8 +54,16 @@ public class PlayerRepository extends FanDuelRepository<Player> {
 			}
 	}
 
+	/**
+	 * Ideally the data in in a database so we could query like below for it:
+	 * 
+	 * select p.id, p.player_name, p.team_id from players p
+	 * join player_stats ps on ps.player_id = p.id
+	 * join games g on g.id = ps.game_id
+	 * where game.date = {datePlayed}
+	 */
 	public List<Player> getAll(final Sport sport, final String datePlayed) {
-		// TODO Auto-generated method stub
+		//Players who have PlayerStats which have Games played on datePlayed
 		
 		List<Integer> playedGames = gameRepository.getAll(sport, datePlayed).stream().map(game -> game.getId()).collect(Collectors.toList());
 		List<Integer> playersPlayed = playerStatsRepository.getAll(sport).stream().filter(stats -> playedGames.contains(stats.getGameId())).map(stats -> stats.getPlayerId()).collect(Collectors.toList());
