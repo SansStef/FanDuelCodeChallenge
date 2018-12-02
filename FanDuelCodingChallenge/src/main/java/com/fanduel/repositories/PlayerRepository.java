@@ -32,6 +32,11 @@ public class PlayerRepository extends FanDuelRepository<Player> {
 
 	private static final String PLAYERS_JSON_FILENAME = "players.json";
 	
+	/**
+	 * Creates Player objects from json file
+	 * 
+	 * TODO Could extend functionality here to add PlayerStats objects to Player model
+	 */
 	@Override
 	protected void setup() throws FileNotFoundException, IOException, ParseException, JsonMappingException {
 		JSONParser parser = new JSONParser();

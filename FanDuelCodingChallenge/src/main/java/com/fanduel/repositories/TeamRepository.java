@@ -3,9 +3,6 @@ package com.fanduel.repositories;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
@@ -20,11 +17,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class TeamRepository extends FanDuelRepository<Team> {
 
+	private static final String TEAMS_JSON_FILENAME = "teams.json";
+
 	public TeamRepository() throws JsonMappingException, FileNotFoundException, IOException, ParseException {
 	}
 
-	private static final String TEAMS_JSON_FILENAME = "teams.json";
-	
+	/**
+	 * Create Team objects from json file
+	 */
 	protected void setup() throws IOException, ParseException {
 		JSONParser parser = new JSONParser();
 		ObjectMapper objectMapper = new ObjectMapper();

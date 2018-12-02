@@ -19,12 +19,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class PlayerStatsRepository extends FanDuelRepository<PlayerStats> {
 
+	private static final String PLAYER_STATS_JSON_FILENAME = "player_stats.json";
+
 	public PlayerStatsRepository() throws JsonMappingException, FileNotFoundException, IOException, ParseException {
 		super();
 	}
 
-	private static final String PLAYER_STATS_JSON_FILENAME = "player_stats.json";
-	
+	/**
+	 * Creates PlayerStats objects from json file
+	 */
 	@Override
 	protected void setup() throws FileNotFoundException, IOException, ParseException, JsonMappingException {
 		JSONParser parser = new JSONParser();
@@ -47,6 +50,9 @@ public class PlayerStatsRepository extends FanDuelRepository<PlayerStats> {
 			}
 	}
 
+	/**
+	 * Gets all PlayerStats objects for a specific Player
+	 */
 	public List<PlayerStats> getPlayerStats(final Sport sport, final int playerId) {
 		return dataModels.get(sport).values().stream().filter(stats -> stats.getPlayerId() == playerId).collect(Collectors.toList());
 	}

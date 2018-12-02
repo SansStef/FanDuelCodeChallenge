@@ -25,7 +25,7 @@ public class DepthCharts {
 
 	private static void checkIfPositionIsSupported(final Sport sport, final String position) throws UnsupportedPositionException {
 		if(!sport.isSupportedPosition(position)) {
-			throw new UnsupportedPositionException();
+			throw new UnsupportedPositionException(position);
 		}
 	}
 	

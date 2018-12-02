@@ -16,7 +16,8 @@ public class SupportedSportInterceptor extends HandlerInterceptorAdapter{
 	private static final String SPORT_PATH_VARIABLE = "sport";
 	
 	/**
-	 * Check if sport in path variable is supported
+	 * Check if sport in path variable is supported 
+	 * (i.e.) sport is included in Sport enum
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

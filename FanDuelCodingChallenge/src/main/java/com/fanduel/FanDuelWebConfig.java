@@ -11,6 +11,9 @@ import com.fanduel.interceptor.SupportedSportInterceptor;
 @Configuration
 public class FanDuelWebConfig implements WebMvcConfigurer{
 	
+	/**
+	 * Adds interceptor to check supported sport on url mapping
+	 */
 	@Override
 	public void addInterceptors(final InterceptorRegistry registry) {
 	    registry.addInterceptor(new SupportedSportInterceptor());

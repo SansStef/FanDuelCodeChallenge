@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,8 +27,17 @@ public class GameRepository extends FanDuelRepository<Game> {
 
 	private static final String GAMES_JSON_FILENAME = "games.json";
 	private static final String GAME_STATES_JSON_FILENAME = "game_states.json";
+	
+	/**
+	 * Date format within json file
+	 */
 	private static final String JSON_DATE_FORMAT = "M/d/yyyy";
 	
+	
+	/**
+	 * Creates Game objects from json file and associated GameState objects
+	 * and adds them to dataModels data structure
+	 */
 	protected void setup() throws FileNotFoundException, IOException, ParseException, JsonMappingException {
 		JSONParser parser = new JSONParser();
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -66,6 +74,9 @@ public class GameRepository extends FanDuelRepository<Game> {
 		
 	}
 	
+	/**
+	 * Gets all games of a sport on a given day
+	 */
 	public List<Game> getAll(final Sport sport, final String filterDate) {
 		
 		return dataModels.get(sport).values().stream()

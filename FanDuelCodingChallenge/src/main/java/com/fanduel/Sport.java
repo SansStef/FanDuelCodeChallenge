@@ -2,6 +2,11 @@ package com.fanduel;
 
 import java.util.Arrays;
 
+/**
+ * Sports supported by the system are included in this Enum
+ * with a csv String of the supported positions of that sport
+ *
+ */
 public enum Sport {
 	
 	NFL("QB,WR,RB,TE,K,P,KR,PR"),
